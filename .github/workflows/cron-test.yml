@@ -6,7 +6,7 @@ on:
 jobs:
   build_and_check:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 3 # Set the overall job timeout
 
     steps:
       - name: Checkout repository
@@ -15,34 +15,9 @@ jobs:
       - name: Install Broken Link Checker
         run: npm install -g broken-link-checker
 
-      - name: Retry Run Cron Job
-        id: retry
-        run: |
-          retries=5
-          wait_seconds=10
-          success=false
-          output=""
+      - name: Run Cron Job
+        run: blc http://206.12.88.113/ -f --filter-level=3
 
-          for attempt in $(seq 1 $retries); do
-            echo "Running attempt $attempt"
-            if output=$(timeout 1m blc http://206.12.88.113/ -f --filter-level=3 2>&1); then
-              success=true
-              break
-            else
-              echo "Job failed. Retrying in $wait_seconds seconds..."
-              sleep $wait_seconds
-            fi
-          done
-
-          if [ "$success" = true ]; then
-            echo "$output"
-            echo "::set-output name=job_result::success"
-          else
-            echo "Job failed after $retries attempts."
-            echo "$output"
-            echo "::set-output name=job_result::failure"
-          fi
-
-      - name: Handle Failed Job
-        if: steps.retry.outputs.job_result == 'failure'
-        run: echo "Job failed after multiple retries." # Add any actions for handling failed job
+      - name: Handle Timeout
+        if: ${{ job.completed == false }} # Check if the job has not completed
+        run: echo "Job timed out" # Add any actions or commands to handle the timeout
