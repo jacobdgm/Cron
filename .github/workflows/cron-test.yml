@@ -17,4 +17,3 @@ jobs:
 
       - name: Run Cron Job
         run: blc http://206.12.88.113/ -f --filter-level=3
-        timeout-minutes: 60
