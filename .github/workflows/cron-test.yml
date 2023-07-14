@@ -16,7 +16,6 @@ jobs:
         run: npm install -g broken-link-checker
 
       - name: Retry Run Cron Job
-        id: retry
         run: |
           retries=5
           wait_seconds=10
@@ -24,9 +23,13 @@ jobs:
 
           for attempt in $(seq 1 $retries); do
             echo "Running attempt $attempt"
-            timeout 1m blc http://206.12.88.113/ -f --filter-level=3 && success=true && break
-            echo "Job failed. Retrying in $wait_seconds seconds..."
-            sleep $wait_seconds
+            if timeout 1m bash -c 'blc http://206.12.88.113/ -f --filter-level=3'; then
+              success=true
+              break
+            else
+              echo "Job failed. Retrying in $wait_seconds seconds..."
+              sleep $wait_seconds
+            fi
           done
 
           if [ "$success" = true ]; then
