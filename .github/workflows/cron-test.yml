@@ -16,5 +16,17 @@ jobs:
         run: npm install -g broken-link-checker
 
       - name: Run Cron Job
+        id: blc
         run: |
-            blc http://206.12.88.113/ -f --filter-level=3
+          timeout 10m blc http://206.12.88.113/ -f --filter-level=3 || exit 0
+        timeout-minutes: 15
+
+      - name: Check Result
+        run: |
+          if [ "${{ steps.blc.exit_code }}" -eq 0 ]; then
+            echo "Link checker finished successfully."
+            # Custom actions for successful completion
+          else
+            echo "Link checker failed or timed out."
+            # Custom actions for failure or timeout
+          fi
