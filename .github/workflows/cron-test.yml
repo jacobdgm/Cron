@@ -18,16 +18,15 @@ jobs:
       - name: Retry Run Cron Job
         id: retry
         run: |
-          retries=100
+          retries=5
           wait_seconds=10
           success=false
           output=""
 
           for attempt in $(seq 1 $retries); do
             echo "Running attempt $attempt"
-            if blc_output=$(timeout 1m blc http://206.12.88.113/ -f --filter-level=3 2>&1); then
+            if output=$(timeout 1m blc http://206.12.88.113/ -f --filter-level=3 2>&1); then
               success=true
-              output="$blc_output"
               break
             else
               echo "Job failed. Retrying in $wait_seconds seconds..."
@@ -35,9 +34,8 @@ jobs:
             fi
           done
 
-          echo "$output"
-
           if [ "$success" = true ]; then
+            echo "$output"
             echo "Link checker finished successfully."
             # Custom actions for successful completion
           else
