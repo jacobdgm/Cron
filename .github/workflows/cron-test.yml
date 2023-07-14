@@ -18,4 +18,4 @@ jobs:
       - name: Run Cron Job
         id: blc
         run: |
-          blc http://206.12.88.113/ -f --filter-level=3
+          blc http://206.12.88.113/ -f
