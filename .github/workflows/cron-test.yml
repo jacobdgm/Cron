@@ -18,7 +18,7 @@ jobs:
       - name: Retry Run Cron Job
         id: retry
         run: |
-          retries=5
+          retries=100
           wait_seconds=10
           success=false
           output=""
