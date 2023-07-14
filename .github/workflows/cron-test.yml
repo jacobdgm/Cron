@@ -15,31 +15,14 @@ jobs:
       - name: Install Broken Link Checker
         run: npm install -g broken-link-checker
 
-      - name: Retry Run Cron Job
-        id: retry
-        run: |
-          retries=100
-          wait_seconds=10
-          success=false
-          output=""
+      - name: Run Cron Job
+        id: run_job
+        run: blc http://206.12.88.113/ -f --filter-level=3
 
-          for attempt in $(seq 1 $retries); do
-            echo "Running attempt $attempt"
-            if output=$(timeout 1m blc http://206.12.88.113/ -f --filter-level=3 2>&1); then
-              success=true
-              break
-            else
-              echo "Job failed. Retrying in $wait_seconds seconds..."
-              sleep $wait_seconds
-            fi
-          done
+      - name: Check Job Status and Retry
+        if: ${{ job.status != 'success' && job.run_number < 5 }}
+        run: echo "Retrying job..." # Add any retry actions or commands here
 
-          if [ "$success" = true ]; then
-            echo "$output"
-            echo "Link checker finished successfully."
-            # Custom actions for successful completion
-          else
-            echo "Link checker failed after $retries attempts."
-            # Custom actions for failure
-            exit 1
-          fi
+      - name: Handle Failed Job
+        if: ${{ job.status != 'success' && job.run_number >= 5 }}
+        run: echo "Job failed after multiple retries." # Add any actions for handling failed job
