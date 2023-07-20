@@ -14,9 +14,10 @@ jobs:
 
       - name: Install Broken Link Checker
         run: npm install -g broken-link-checker
-        
-      - name: help
-        run: blc --help
 
       - name: Run Cron Job
-        run: blc http://206.12.88.113/ -fvie --filter-level=3
+        run: blc http://206.12.88.113/ -fo --filter-level=3
+
+#       - name: Handle Timeout
+#         if: ${{ job.completed == false }} # Check if the job has not completed
+#         run: echo "Job timed out" # Add any actions or commands to handle the timeout
