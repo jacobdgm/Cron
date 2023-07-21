@@ -12,8 +12,7 @@ on: [push]
 
 # globals
 env:
-  CHECK_WEBSITE: https://music-encoding.org
-  CHECK_OWNER: music-encoding
+  CHECK_WEBSITE:  http://206.12.88.113/
   CHECK_BRANCH: main
 
 jobs:
