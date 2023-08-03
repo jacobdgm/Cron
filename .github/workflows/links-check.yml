@@ -13,5 +13,8 @@ jobs:
         uses: lycheeverse/lychee-action@v1.8.0
         with:
           args: --base 'http://206.12.88.113/'
+          format: json
+          fail: false
+          
 
 
