@@ -6,6 +6,7 @@ jobs:
   linkChecker:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix: 
         links:
           - http://206.12.88.113/article/3
