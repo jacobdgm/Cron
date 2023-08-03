@@ -13,7 +13,7 @@ jobs:
         uses: lycheeverse/lychee-action@v1.8.0
         with:
           args: http://206.12.88.113/
-          format: json
+          format: markdown
           fail: false
           
 
