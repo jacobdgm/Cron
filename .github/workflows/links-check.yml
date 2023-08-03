@@ -11,5 +11,7 @@ jobs:
       - name: Link Checker
         id: lychee
         uses: lycheeverse/lychee-action@v1.8.0
+        with:
+          args: --base 'http://206.12.88.113/'
 
 
