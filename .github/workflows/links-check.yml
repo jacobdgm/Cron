@@ -58,6 +58,7 @@ jobs:
           args: ${{ matrix.links }}
           format: markdown
           fail: true
+          jobSummary: true
           
 
 
