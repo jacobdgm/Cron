@@ -55,7 +55,7 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v1.8.0
         with:
-          args: ${{ matrix.version }}
+          args: ${{ matrix.links }}
           format: markdown
           fail: false
           
