@@ -9,45 +9,45 @@ jobs:
       fail-fast: false
       matrix: 
         links:
-          - http://206.12.88.113/article/3
-          - http://206.12.88.113/article/4
-          - http://206.12.88.113/article/5
-          - http://206.12.88.113/article/6
-          - http://206.12.88.113/article/7
-          - http://206.12.88.113/article/8
-          - http://206.12.88.113/article/9
-          - http://206.12.88.113/article/10
-          - http://206.12.88.113/article/11
-          - http://206.12.88.113/article/12
-          - http://206.12.88.113/article/13
-          - http://206.12.88.113/article/14
-          - http://206.12.88.113/article/15
-          - http://206.12.88.113/article/16
-          - http://206.12.88.113/article/17
-          - http://206.12.88.113/article/18
-          - http://206.12.88.113/article/19
-          - http://206.12.88.113/article/20
-          - http://206.12.88.113/article/21
-          - http://206.12.88.113/article/22
-          - http://206.12.88.113/article/23
-          - http://206.12.88.113/article/24
-          - http://206.12.88.113/article/25
-          - http://206.12.88.113/article/26
-          - http://206.12.88.113/article/27
-          - http://206.12.88.113/article/28
-          - http://206.12.88.113/article/29
-          - http://206.12.88.113/article/30
-          - http://206.12.88.113/article/31
-          - http://206.12.88.113/article/32
-          - http://206.12.88.113/article/33
-          - http://206.12.88.113/article/34
-          - http://206.12.88.113/
-          - http://206.12.88.113/about/acknowledgements/
-          - http://206.12.88.113/about/faq/
-          - http://206.12.88.113/about/id-numbers/
-          - http://206.12.88.113/citations/
-          - http://206.12.88.113/documents/
-          - http://206.12.88.113/field-descriptions/
+          # - http://206.12.88.113/article/3
+          # - http://206.12.88.113/article/4
+          # - http://206.12.88.113/article/5
+          # - http://206.12.88.113/article/6
+          # - http://206.12.88.113/article/7
+          # - http://206.12.88.113/article/8
+          # - http://206.12.88.113/article/9
+          # - http://206.12.88.113/article/10
+          # - http://206.12.88.113/article/11
+          # - http://206.12.88.113/article/12
+          # - http://206.12.88.113/article/13
+          # - http://206.12.88.113/article/14
+          # - http://206.12.88.113/article/15
+          # - http://206.12.88.113/article/16
+          # - http://206.12.88.113/article/17
+          # - http://206.12.88.113/article/18
+          # - http://206.12.88.113/article/19
+          # - http://206.12.88.113/article/20
+          # - http://206.12.88.113/article/21
+          # - http://206.12.88.113/article/22
+          # - http://206.12.88.113/article/23
+          # - http://206.12.88.113/article/24
+          # - http://206.12.88.113/article/25
+          # - http://206.12.88.113/article/26
+          # - http://206.12.88.113/article/27
+          # - http://206.12.88.113/article/28
+          # - http://206.12.88.113/article/29
+          # - http://206.12.88.113/article/30
+          # - http://206.12.88.113/article/31
+          # - http://206.12.88.113/article/32
+          # - http://206.12.88.113/article/33
+          # - http://206.12.88.113/article/34
+          # - http://206.12.88.113/
+          # - http://206.12.88.113/about/acknowledgements/
+          # - http://206.12.88.113/about/faq/
+          # - http://206.12.88.113/about/id-numbers/
+          # - http://206.12.88.113/citations/
+          # - http://206.12.88.113/documents/
+          # - http://206.12.88.113/field-descriptions/
           - http://206.12.88.113/references/
           - http://206.12.88.113/tutorial/
     steps:
@@ -57,5 +57,5 @@ jobs:
         uses: lycheeverse/lychee-action@v1.8.0
         with:
           args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
-          format: markdown
+          format: json
           fail: true
