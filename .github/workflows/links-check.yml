@@ -62,5 +62,5 @@ jobs:
           format: json
           fail: true
           output: lychee/results.json
-      - name: Parser checker
+      # - name: Parser checker
         
