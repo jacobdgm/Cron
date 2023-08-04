@@ -59,4 +59,3 @@ jobs:
           args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
           format: markdown
           fail: true
-          output: lychee/results.md
