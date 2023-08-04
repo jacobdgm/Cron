@@ -48,8 +48,10 @@ jobs:
           # - http://206.12.88.113/citations/
           # - http://206.12.88.113/documents/
           # - http://206.12.88.113/field-descriptions/
-          - http://206.12.88.113/references/
-          - http://206.12.88.113/tutorial/
+          # - http://206.12.88.113/references/
+          # - http://206.12.88.113/tutorial/
+          # test website for broken
+          - https://site-deforesting.github.io/linkedmusic-website/
     steps:
       - uses: actions/checkout@v3
       - name: Link Checker
