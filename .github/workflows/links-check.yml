@@ -49,7 +49,7 @@ jobs:
           # - http://206.12.88.113/documents/
           # - http://206.12.88.113/field-descriptions/
           # - http://206.12.88.113/references/
-          # - http://206.12.88.113/tutorial/
+          - http://206.12.88.113/tutorial/
           # test website for broken
           - https://site-deforesting.github.io/linkedmusic-website/
     steps:
@@ -61,3 +61,6 @@ jobs:
           args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
           format: json
           fail: true
+          output: lychee/results.json
+      - name: Parser checker
+        
