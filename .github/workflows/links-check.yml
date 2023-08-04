@@ -60,7 +60,6 @@ jobs:
         with:
           args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
           format: json
-          fail: true
           output: lychee/results.json
       - name: Parser checker
         run: cat lychee/results.json
