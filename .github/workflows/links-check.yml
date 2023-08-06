@@ -61,9 +61,6 @@ jobs:
         with:
           args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
           format: json
-          output: /tmp/lychee_out_${{ matrix.links }}.txt
-      - name: reader
-        run: cat /tmp/lychee_out_${{ matrix.links }}.txt
   Filter-result:
     needs: link-Checker
     runs-on: ubuntu-latest
