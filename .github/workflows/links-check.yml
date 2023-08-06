@@ -1,12 +1,13 @@
-name: Links-check
+name: new link check
 
 on: [push]
 
 jobs:
-  linkChecker:
+  link-Checker:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 4
       matrix: 
         links:
           # - http://206.12.88.113/article/3
@@ -63,3 +64,12 @@ jobs:
           output: /tmp/lychee_out_${{ matrix.links }}.txt
       - name: reader
         run: cat /tmp/lychee_out_${{ matrix.links }}.txt
+  Filter-result:
+    needs: link-Checker
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          OUTPUT_MATRIX: ${{ needs.link-Checker.outputs }}
+        run: echo "$OUTPUT_MATRIX"
+    
+    
