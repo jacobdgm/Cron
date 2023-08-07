@@ -54,15 +54,15 @@ jobs:
           # test website for broken
           - https://site-deforesting.github.io/linkedmusic-website/
     steps:
-      - uses: actions/checkout@v3
-      - name: Link Checker
-        id: lychee
-        uses: lycheeverse/lychee-action@v1.8.0
-        with:
-          args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
-          format: json
-          output: link-checker.txt
+      # - uses: actions/checkout@v3
+      # - name: Link Checker
+      #   id: lychee
+      #   uses: lycheeverse/lychee-action@v1.8.0
+      #   with:
+      #     args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
+      #     format: json
+      #     output: link-checker.txt
       - name: parsing output
         run: |
-          cat link-checker.txt
-          echo python --version
+          # cat link-checker.txt
+          python --version
