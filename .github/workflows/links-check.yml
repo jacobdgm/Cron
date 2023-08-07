@@ -60,13 +60,7 @@ jobs:
         uses: lycheeverse/lychee-action@v1.8.0
         with:
           args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
-          format: json
-  Filter-result:
-    needs: link-Checker
-    runs-on: ubuntu-latest
-    steps:
-      - env:
-          OUTPUT_MATRIX: ${{ needs.link-Checker.outputs }}
-        run: echo "$OUTPUT_MATRIX"
-    
-    
+          format: mardown
+          output: link-checker.txt
+      - name: parsing output
+        run: cat link-checker.txt
