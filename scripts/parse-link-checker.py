@@ -14,8 +14,8 @@ with open(FILE_LOCATION) as f:
 listOfFailure = link_checker_result['fail_map']
 
 if not listOfFailure:
-  sys.exit(0)
   print("# ✅ No Broken Link")
+  sys.exit(0)
 
 RealErrors = []
 skipErrors = []
