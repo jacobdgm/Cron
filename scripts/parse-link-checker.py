@@ -1,7 +1,11 @@
 import json
 import sys
+from pathlib import Path
 
 FILE_LOCATION = "/tmp/link-checker.txt"
+
+if not Path(FILE_LOCATION).exists():
+  print("# ✅ No Broken Link")
 
 with open(FILE_LOCATION) as f:
   link_checker_result = json.load(f)
