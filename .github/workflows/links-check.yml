@@ -50,7 +50,8 @@ jobs:
           # - http://206.12.88.113/documents/
           # - http://206.12.88.113/field-descriptions/
           # - http://206.12.88.113/references/
-          - http://206.12.88.113/tutorial/
+          # - http://206.12.88.113/tutorial/
+          
           # test website for broken
           - https://site-deforesting.github.io/linkedmusic-website/
     steps:
@@ -67,5 +68,5 @@ jobs:
           echo "***Python Version***"
           python --version
           echo "***Invoking parsing script***"
-          ls -A
+          echo "[LS]: $(ls -al)"
           
