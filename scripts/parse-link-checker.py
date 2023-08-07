@@ -10,6 +10,7 @@ listOfFailure = link_checker_result['fail_map']
 print(listOfFailure)
 
 if listOfFailure:
-  for failure in listOfFailure:
-    print(failure)
-    print(failure.status)
+  for failureWebSite in listOfFailure:
+    for failure in listOfFailure[failureWebSite]
+      print(failure)
+      
