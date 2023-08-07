@@ -32,6 +32,10 @@ for failureWebSite in listOfFailure:
     else:
       skipErrors.append(failure)
 
+print("#DEBUG")
+print(f"RealErrors: {len(RealErrors)}")
+print(f"skipErrors: {len(skipErrors)}")
+
 if RealErrors:
   print("# Broken Link")
   for error in RealErrors:
