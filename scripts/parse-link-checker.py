@@ -6,6 +6,7 @@ FILE_LOCATION = "/tmp/link-checker.txt"
 
 if not Path(FILE_LOCATION).exists():
   print("# ✅ No Broken Link")
+  sys.exit(0)
 
 with open(FILE_LOCATION) as f:
   link_checker_result = json.load(f)
