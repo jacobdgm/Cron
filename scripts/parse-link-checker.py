@@ -8,5 +8,8 @@ with open(FILE_LOCATION) as f:
 listOfFailure = link_checker_result['fail_map']
 
 if listOfFailure:
+  print(type(listOfFailure))
+  
   for failure in listOfFailure:
     print(failure)
+    print(failure.status)
