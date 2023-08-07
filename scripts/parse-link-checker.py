@@ -8,10 +8,19 @@ with open(FILE_LOCATION) as f:
 listOfFailure = link_checker_result['fail_map']
 
 if listOfFailure:
-  RealErrors = {}
-  
+  RealErrors = []
+  skipErrors = []
   
   for failureWebSite in listOfFailure:
     for failure in listOfFailure[failureWebSite]:
-      print(failure)
+      errorCode = failure['status'].get(code)
+      if not errorCode:
+        skipErrors.append(failure)
+        continue
+
+      if 400 <= errorCode and 500 > errorCode:
+        RealErrors.append(failure)
+
+  print(RealErrors)
+  print(skipErrors)
       
