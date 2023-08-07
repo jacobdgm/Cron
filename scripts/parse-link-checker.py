@@ -11,6 +11,6 @@ print(listOfFailure)
 
 if listOfFailure:
   for failureWebSite in listOfFailure:
-    for failure in listOfFailure[failureWebSite]
+    for failure in listOfFailure[failureWebSite]:
       print(failure)
       
