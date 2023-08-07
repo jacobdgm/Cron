@@ -68,5 +68,5 @@ jobs:
           echo "***Python Version***"
           python --version
           echo "***Invoking parsing script***"
-          echo "[LS]: $(ls -Al ..)"
+          echo "[LS]: $(ls -Al)"
           
