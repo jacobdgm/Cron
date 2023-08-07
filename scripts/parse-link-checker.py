@@ -7,6 +7,6 @@ with open(FILE_LOCATION) as f:
 
 listOfFailure = link_checker_result['fail_map']
 
-if failure:
+if listOfFailure:
   for failure in listOfFailure:
     print(failure)
