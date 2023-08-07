@@ -63,4 +63,6 @@ jobs:
           format: json
           output: link-checker.txt
       - name: parsing output
-        run: cat link-checker.txt
+        run: |
+          cat link-checker.txt
+          echo python --version
