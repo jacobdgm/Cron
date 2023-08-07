@@ -13,7 +13,7 @@ if listOfFailure:
   
   for failureWebSite in listOfFailure:
     for failure in listOfFailure[failureWebSite]:
-      errorCode = failure['status'].get(code)
+      errorCode = failure['status'].get('code')
       if not errorCode:
         skipErrors.append(failure)
         continue
