@@ -56,17 +56,17 @@ jobs:
           - https://site-deforesting.github.io/linkedmusic-website/
     steps:
       - uses: actions/checkout@v3
-    #   - name: Link Checker
-    #     id: lychee
-    #     uses: lycheeverse/lychee-action@v1.8.0
-    #     with:
-    #       args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
-    #       format: json
-    #       output: /tmp/link-checker.txt
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.8.0
+        with:
+          args: --exclude http:\/\/cantus\.sk.* ${{ matrix.links }}
+          format: json
+          output: /tmp/link-checker.txt
       - name: parsing output
         run: |
           echo "***Python Version***"
           python --version
           echo "***Invoking parsing script***"
-          echo "[LS]: $(ls -Al ${{ github.workspace }}/scripts )"
+          python3 ${{ github.workspace }}/scripts/parse-link-checker.py
           
