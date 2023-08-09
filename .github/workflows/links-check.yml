@@ -1,6 +1,8 @@
 name: new link check
 
-on: [push]
+on: 
+  schedule:
+      - cron: "*/5 * * * *"
 
 jobs:
   link-Checker:
