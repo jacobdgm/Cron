@@ -69,4 +69,6 @@ jobs:
           python --version
           echo "***Invoking parsing script***"
           python3 ${{ github.workspace }}/scripts/parse-link-checker.py >> $GITHUB_STEP_SUMMARY
+          echo "***Printing step summary***"
+          echo "$GITHUB_STEP_SUMMARY"
           
