@@ -51,8 +51,10 @@ jobs:
           - http://206.12.88.113/citations/
           - http://206.12.88.113/documents/
           - http://206.12.88.113/field-descriptions/
+          - http://206.12.88.113/description/
           - http://206.12.88.113/references/
           - http://206.12.88.113/tutorial/
+          - https://cantusdatabase.org/field-descriptions/
           
           # test website for broken
           - https://site-deforesting.github.io/linkedmusic-website/
