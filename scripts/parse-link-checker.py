@@ -4,10 +4,12 @@ from pathlib import Path
 
 FILE_LOCATION = "/tmp/link-checker.txt"
 
+# If link checker doesn't have any errors exit gracefully
 if not Path(FILE_LOCATION).exists():
   print("# ✅ No Broken Link")
   sys.exit(0)
 
+# Loading link checker output result
 with open(FILE_LOCATION) as f:
   link_checker_result = json.load(f)
 
@@ -20,14 +22,15 @@ if not listOfFailure:
 RealErrors = []
 skipErrors = []
 
-for failureWebSite in listOfFailure:
-  for failure in listOfFailure[failureWebSite]:
+for failureWebSite in listOfFailure: # looping through tested websites
+  for failure in listOfFailure[failureWebSite]: # looping through broken links
     errorCode = failure['status'].get('code')
-    if not errorCode:
+    if not errorCode: # if there's a timeout its a client side issue so will not exit 1, but just print as an additional problem
       skipErrors.append(failure)
       continue
 
-    if 400 <= errorCode and 500 > errorCode:
+    # Find all 4xx errors
+    if 400 <= errorCode and 500 > errorCode: 
       RealErrors.append(failure)
     else:
       skipErrors.append(failure)
