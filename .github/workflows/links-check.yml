@@ -5,59 +5,22 @@ on:
       - cron: "*/5 * * * *"
 
 jobs:
+  get-links:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - id: set-matrix
+      run: |
+         links=$(curl http://206.12.88.113/flatpages-list/ | awk '{ gsub (" ", ",", $0); print}')
+         echo "{\"links\": [$links]}" >> $GITHUB_OUTPUT
   link-Checker:
     runs-on: ubuntu-latest
+    needs: get-links
     strategy:
       fail-fast: false
       max-parallel: 4
-      matrix: 
-        links:
-          - http://206.12.88.113/article/3
-          - http://206.12.88.113/article/4
-          - http://206.12.88.113/article/5
-          - http://206.12.88.113/article/6
-          - http://206.12.88.113/article/7
-          - http://206.12.88.113/article/8
-          - http://206.12.88.113/article/9
-          - http://206.12.88.113/article/10
-          - http://206.12.88.113/article/11
-          - http://206.12.88.113/article/12
-          - http://206.12.88.113/article/13
-          - http://206.12.88.113/article/14
-          - http://206.12.88.113/article/15
-          - http://206.12.88.113/article/16
-          - http://206.12.88.113/article/17
-          - http://206.12.88.113/article/18
-          - http://206.12.88.113/article/19
-          - http://206.12.88.113/article/20
-          - http://206.12.88.113/article/21
-          - http://206.12.88.113/article/22
-          - http://206.12.88.113/article/23
-          - http://206.12.88.113/article/24
-          - http://206.12.88.113/article/25
-          - http://206.12.88.113/article/26
-          - http://206.12.88.113/article/27
-          - http://206.12.88.113/article/28
-          - http://206.12.88.113/article/29
-          - http://206.12.88.113/article/30
-          - http://206.12.88.113/article/31
-          - http://206.12.88.113/article/32
-          - http://206.12.88.113/article/33
-          - http://206.12.88.113/article/34
-          - http://206.12.88.113/
-          - http://206.12.88.113/about/acknowledgements/
-          - http://206.12.88.113/about/faq/
-          - http://206.12.88.113/about/id-numbers/
-          - http://206.12.88.113/citations/
-          - http://206.12.88.113/documents/
-          - http://206.12.88.113/field-descriptions/
-          - http://206.12.88.113/description/
-          - http://206.12.88.113/references/
-          - http://206.12.88.113/tutorial/
-          - https://cantusdatabase.org/field-descriptions/
-          
-          # test website for broken
-          - https://site-deforesting.github.io/linkedmusic-website/
+      matrix:  ${{fromJson(needs.get-links.outputs.matrix)}}
     steps:
       - uses: actions/checkout@v3
       - name: Link Checker
