@@ -13,7 +13,7 @@ jobs:
     - id: set-matrix
       run: |
          flatpages=$(curl http://206.12.88.113/flatpages-list/ | awk '{ gsub (" ", "\",\"", $0); print}')
-         articles=$(curl http://206.12.88.113/articles-list// | awk '{ gsub (" ", "\",\"", $0); print}')
+         articles=$(curl http://206.12.88.113/articles-list/ | awk '{ gsub (" ", "\",\"", $0); print}')
          list="{\"links\": [\"${flatpages}\",\"${articles}\"]}"
          echo $list
          echo "matrix=$list" >> $GITHUB_OUTPUT
