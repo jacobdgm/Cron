@@ -14,7 +14,7 @@ jobs:
       run: |
          flatpages=$(curl http://206.12.88.113/flatpages-list/ | awk '{ gsub (" ", "\",\"", $0); print}')
          articles=$(curl http://206.12.88.113/articles-list// | awk '{ gsub (" ", "\",\"", $0); print}')
-         list=echo "{\"links\": [\"$flatpages\",\"articles\"]}" )"
+         list=echo "{\"links\": [\"$flatpages\",\"articles\"]}"
          echo "matrix=$list" >> $GITHUB_OUTPUT
   link-Checker:
     runs-on: ubuntu-latest
