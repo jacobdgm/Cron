@@ -13,7 +13,7 @@ jobs:
     - id: set-matrix
       run: |
          links=$(curl http://206.12.88.113/flatpages-list/ | awk '{ gsub (" ", "\",\"", $0); print}')
-         echo "{\"links\": [\"$links\"]}" >> $GITHUB_OUTPUT
+         echo "::set-output name=matrix::$( echo "{\"links\": [\"$links\"]}" )"
   link-Checker:
     runs-on: ubuntu-latest
     needs: get-links
