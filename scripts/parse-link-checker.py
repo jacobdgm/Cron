@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 import sys
 
-print(f"Running: {sys.argv[0]}". file=sys.stderr)
+print(f"Running: {sys.argv[0]}", file=sys.stderr)
 
 FILE_LOCATION = "/tmp/link-checker.txt"
 
