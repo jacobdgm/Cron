@@ -1,6 +1,9 @@
 import json
 import sys
 from pathlib import Path
+import sys
+
+print(f"Running: {sys.argv[0]}")
 
 FILE_LOCATION = "/tmp/link-checker.txt"
 
