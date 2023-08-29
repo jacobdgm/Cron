@@ -8,9 +8,12 @@ FILE_LOCATION = "/tmp/link-checker.txt"
 if not Path(FILE_LOCATION).exists():
   print("# ✅ No Broken Link")
   sys.exit(0)
+else:
+  print("# Broken Link found, parsing needed")
 
 # Loading link checker output result
 with open(FILE_LOCATION) as f:
+  print(f"Parsing the json data for {FILE_LOCATION}")
   link_checker_result = json.load(f)
 
 listOfFailure = link_checker_result['fail_map']
