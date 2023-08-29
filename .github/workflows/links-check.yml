@@ -1,9 +1,8 @@
 name: new link check
 
-on:
-  push:
-    branches:
-      - main  # Adjust this to match your default branch
+on: 
+  schedule:
+      - cron: "*/30 * * * *"
 
 jobs:
   get-links:
