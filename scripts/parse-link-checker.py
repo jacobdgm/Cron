@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 import sys
 
-print(f"Running: {sys.argv[0]}")
+print(f"Running: {sys.argv[0]}". file=sys.stderr)
 
 FILE_LOCATION = "/tmp/link-checker.txt"
 
@@ -12,11 +12,11 @@ if not Path(FILE_LOCATION).exists():
   print("# ✅ No Broken Link")
   sys.exit(0)
 else:
-  print("# Broken Link found, parsing needed")
+  print("# Broken Link found, parsing needed", file=sys.stderr)
 
 # Loading link checker output result
 with open(FILE_LOCATION) as f:
-  print(f"Parsing the json data for {FILE_LOCATION}")
+  print(f"Parsing the json data for {FILE_LOCATION}", file=sys.stderr)
   link_checker_result = json.load(f)
 
 listOfFailure = link_checker_result['fail_map']
