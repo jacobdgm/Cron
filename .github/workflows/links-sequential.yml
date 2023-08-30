@@ -26,7 +26,7 @@ jobs:
       - id: fetch-link-checker
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          apt install gcc pkg-config libc6-dev libssl-dev
+          sudo apt install gcc pkg-config libc6-dev libssl-dev
           cargo install lychee
       - id: link-flatpage
         run : |
