@@ -26,8 +26,11 @@ jobs:
       - id: fetch-link-checker
         name: fetch link checker
         run: |
+          echo "*** Download the archive ***"
           wget "https://github.com/lycheeverse/lychee/releases/download/v0.13.0/lychee-v0.13.0-x86_64-unknown-linux-gnu.tar.gz"
-          ls
+          echo "*** extract the archive ***"
+          tar -xvf lychee-v0.13.0-x86_64-unknown-linux-gnu.tar.gz
+
       # - id: link-flatpage
       #   name: link flatpage
       #   run : |
