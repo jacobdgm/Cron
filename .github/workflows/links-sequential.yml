@@ -24,10 +24,15 @@ jobs:
     needs: fetch-links
     steps:
       - id: fetch-link-checker
+        name: fetch link checker
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           sudo apt install gcc pkg-config libc6-dev libssl-dev
           cargo install lychee
       - id: link-flatpage
+        name: link flatpage
         run : |
-          echo ${{ needs.fetch-links.outputs.flatpages-list }}
+          for i in ${{ needs.fetch-links.outputs.flatpages-list }};
+          do
+            echo $i
+          done
