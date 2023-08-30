@@ -1,8 +1,9 @@
 import json
 import sys
 from pathlib import Path
+import logging
 
-print(f"Running: {sys.argv[0]}", file=sys.stderr)
+logging.info(f"Running: {sys.argv[0]}")
 
 FILE_LOCATION = "/tmp/link-checker.txt"
 
@@ -11,11 +12,11 @@ if not Path(FILE_LOCATION).exists():
   print("# ✅ No Broken Link")
   sys.exit(0)
 else:
-  print("# Broken Link found, parsing needed", file=sys.stderr)
+  logging.info("# Broken Link found, parsing needed")
 
 # Loading link checker output result
 with open(FILE_LOCATION) as f:
-  print(f"Parsing the json data for {FILE_LOCATION}", file=sys.stderr)
+  logging.info(f"Parsing the json data for {FILE_LOCATION}")
   link_checker_result = json.load(f)
 
 listOfFailure = link_checker_result['fail_map']
@@ -32,10 +33,10 @@ for failureWebSite in listOfFailure: # looping through tested websites
     errorCode = failure['status'].get('code')
     if not errorCode: # if there's a timeout its a client side issue so will not exit 1, but just print as an additional problem
       skipErrors.append(failure)
-      print(f"timeout: {failure}", file=sys.stderr)
+      logging.info(f"timeout: {failure}")
       continue
 
-    print(f"{errorCode}: {failure}", file=sys.stderr)
+    logging.info(f"{errorCode}: {failure}")
 
     # Find all 4xx errors
     if 400 <= errorCode and 500 > errorCode:
