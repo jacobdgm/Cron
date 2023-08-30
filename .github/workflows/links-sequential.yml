@@ -1,0 +1,29 @@
+name: new link check
+
+on: [push]
+
+jobs:
+  fetch-links:
+    runs-on: ubuntu-latest
+    outputs:
+      flatpages-list: ${{ steps.flatpages-list.outputs.list }}
+      articles-list: ${{ steps.articles-list.outputs.list }}
+    steps:
+    - id: flatpages-list
+      run: |
+         flatpages=$(curl http://206.12.88.113/flatpages-list/
+         echo $flatpages
+         echo "list=$flatpages" >> $GITHUB_OUTPUT
+    - id: articles-list
+      run: |
+        articles=$(curl http://206.12.88.113/articles-list/
+        echo $articles
+        echo "list=$articles" >> $GITHUB_OUTPUT
+  link-Checker:
+    runs-on: ubuntu-latest
+    needs: fetch-links
+    steps:
+      - id: fetch-link-checker
+        run: |
+          curl -sSf 'https://sh.rustup.rs' | sh
+          apt install gcc pkg-config libc6-dev libssl-dev
