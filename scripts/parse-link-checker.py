@@ -1,7 +1,6 @@
 import json
 import sys
 from pathlib import Path
-import sys
 
 print(f"Running: {sys.argv[0]}", file=sys.stderr)
 
@@ -33,10 +32,13 @@ for failureWebSite in listOfFailure: # looping through tested websites
     errorCode = failure['status'].get('code')
     if not errorCode: # if there's a timeout its a client side issue so will not exit 1, but just print as an additional problem
       skipErrors.append(failure)
+      print(f"timeout: {failure}", file=sys.stderr)
       continue
 
+    print(f"{errorCode}: {failure}", file=sys.stderr)
+
     # Find all 4xx errors
-    if 400 <= errorCode and 500 > errorCode: 
+    if 400 <= errorCode and 500 > errorCode:
       RealErrors.append(failure)
     else:
       skipErrors.append(failure)
