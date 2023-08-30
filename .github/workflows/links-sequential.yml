@@ -26,13 +26,12 @@ jobs:
       - id: fetch-link-checker
         name: fetch link checker
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          sudo apt install gcc pkg-config libc6-dev libssl-dev
-          cargo install lychee
-      - id: link-flatpage
-        name: link flatpage
-        run : |
-          for i in ${{ needs.fetch-links.outputs.flatpages-list }};
-          do
-            echo $i
-          done
+          wget "https://github.com/lycheeverse/lychee/releases/download/v0.13.0/lychee-v0.13.0-x86_64-unknown-linux-gnu.tar.gz"
+          ls
+      # - id: link-flatpage
+      #   name: link flatpage
+      #   run : |
+      #     for i in ${{ needs.fetch-links.outputs.flatpages-list }};
+      #     do
+      #       echo $i
+      #     done
