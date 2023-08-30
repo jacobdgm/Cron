@@ -1,4 +1,4 @@
-name: new link check
+name: sequential new link check
 
 on: [push]
 
@@ -11,12 +11,12 @@ jobs:
     steps:
     - id: flatpages-list
       run: |
-         flatpages=$(curl http://206.12.88.113/flatpages-list/
+         flatpages=$(curl http://206.12.88.113/flatpages-list/)
          echo $flatpages
          echo "list=$flatpages" >> $GITHUB_OUTPUT
     - id: articles-list
       run: |
-        articles=$(curl http://206.12.88.113/articles-list/
+        articles=$(curl http://206.12.88.113/articles-list/)
         echo $articles
         echo "list=$articles" >> $GITHUB_OUTPUT
   link-Checker:
