@@ -25,5 +25,9 @@ jobs:
     steps:
       - id: fetch-link-checker
         run: |
-          curl -sSf 'https://sh.rustup.rs' | sh
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           apt install gcc pkg-config libc6-dev libssl-dev
+          cargo install lychee
+      - id: link-flatpage
+        run : |
+          echo ${{ needs.fetch-links.outputs.flatpages-list }}
