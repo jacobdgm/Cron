@@ -42,7 +42,7 @@ jobs:
               --no-progress \
               --format markdown \
               --output summary.md \
-              $link
+              $link || true
 
             echo "# $link" >> $GITHUB_STEP_SUMMARY
             cat summary.md >> $GITHUB_STEP_SUMMARY
@@ -58,7 +58,7 @@ jobs:
               --no-progress \
               --format markdown \
               --output summary.md \
-              $link
+              $link || true
 
             echo "# $link" >> $GITHUB_STEP_SUMMARY
             cat summary.md >> $GITHUB_STEP_SUMMARY
