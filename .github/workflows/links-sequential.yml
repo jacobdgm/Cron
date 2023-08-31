@@ -37,5 +37,19 @@ jobs:
         run : |
           for link in ${{ needs.fetch-links.outputs.flatpages-list }};
           do
-            ./lychee --exclude http:\/\/cantus\.sk.* $link
+            ./lychee \
+              --exclude http:\/\/cantus\.sk.* \
+              --no-progress \
+              $link
+          done
+
+      - id: link-articles
+        name: link articles
+        run : |
+          for link in ${{ needs.fetch-links.outputs.articles-list }};
+          do
+            ./lychee \
+              --exclude http:\/\/cantus\.sk.* \
+              --no-progress \
+              $link
           done
