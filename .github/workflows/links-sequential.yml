@@ -31,7 +31,7 @@ jobs:
           echo "*** extract the archive ***"
           tar -xvf lychee-v0.13.0-x86_64-unknown-linux-gnu.tar.gz
           echo "*** ls archive ***"
-          ls
+          ls -l
       # - id: link-flatpage
       #   name: link flatpage
       #   run : |
