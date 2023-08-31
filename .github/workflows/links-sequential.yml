@@ -40,7 +40,12 @@ jobs:
             ./lychee \
               --exclude http:\/\/cantus\.sk.* \
               --no-progress \
+              --format markdown \
+              --output summary.md \
               $link
+
+            echo "# $link" >> $GITHUB_STEP_SUMMARY
+            cat summary.md >> $GITHUB_STEP_SUMMARY
           done
 
       - id: link-articles
@@ -52,4 +57,7 @@ jobs:
               --exclude http:\/\/cantus\.sk.* \
               --no-progress \
               $link
+
+            echo "# $link" >> $GITHUB_STEP_SUMMARY
+            cat summary.md >> $GITHUB_STEP_SUMMARY
           done
